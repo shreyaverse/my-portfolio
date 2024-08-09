@@ -1,93 +1,89 @@
-# Backend Server Setup and API Documentation
+# Personal Portfolio Website
 
-## Introduction
+This is a full-stack portfolio website built using **React.js**, **Express.js**, **MongoDB**, and **Tailwind CSS**. The website showcases various pages including login, sign-out, home, about, skills, blog, subscribe, and contact pages. The project is designed to be responsive and user-friendly.
 
-This project is a backend server built with Node.js and Express, connected to a MongoDB database, and capable of handling contact form submissions. The server includes email notifications using Nodemailer.
+## Features
 
-## Prerequisites
+- **Login & Sign-out**: Secure authentication for users.
+- **Home & About Pages**: Overview of your portfolio and personal background.
+- **Skills Page**: Highlight your technical skills and expertise.
+- **Blog**: Integrated blog section with React-Quill for formatting.
+- **Subscribe**: Users can subscribe to receive updates.
+- **Contact**: Contact form for users to get in touch with you.
+- **Theme Toggling**: Context API for dark/light mode.
+- **Responsive Design**: Optimized for both desktop and mobile views.
+- **Form Validation**: Utilized Formik and Yup for form validation.
+- **HTTP Requests**: Used Axios for API calls.
+- **Email Notifications**: Nodemailer for sending email notifications.
+- **File Uploads**: Multer for handling file uploads.
+- **Deployment**: Deployed for review and feedback.
 
-Ensure you have the following installed on your machine:
-- Node.js (v14.x or higher)
-- npm (v6.x or higher)
-- MongoDB (local or cloud instance)
-- Nodemailer 
+## Installation
 
-## Setup Instructions
+To run this project locally, follow these steps:
 
-### 1. Clone the Repository
+1. **Clone the repository**:
+    ```bash
+    git clone https://github.com/shreyaverse/my-portfolio.git
+    cd my-portfolio
+    ```
 
-```bash
-git clone <repository-url>
-cd <repository-directory>
-```
+2. **Install the dependencies**:
+    - For the backend:
+      ```bash
+      cd backend
+      npm install
+      ```
+    - For the frontend:
+      ```bash
+      cd ../frontend
+      npm install
+      ```
 
-### 2. Install Dependencies
+3. **Set up environment variables**:
+    Create a `.env` file in the backend directory with the following:
+    ```env
+    MONGO_URI=your_mongodb_connection_string
+    NODE_ENV=development
+    JWT_SECRET=your_jwt_secret
+    EMAIL_HOST=your_email_host
+    EMAIL_PORT=your_email_port
+    EMAIL_USER=your_email_user
+    EMAIL_PASS=your_email_pass
+    ```
 
-```bash
-npm install
-```
+4. **Run the application**:
+    - Backend:
+      ```bash
+      cd backend
+      npm run dev
+      ```
+    - Frontend:
+      ```bash
+      cd ../frontend
+      npm start
+      ```
 
-### 3. Environment Variables
+5. **Visit the website**:
+    Open your browser and go to `http://localhost:3000` to view the website.
 
-Create a `.env` file in the root directory and add the following environment variables:
+## Technologies Used
 
-```plaintext
-PORT=5001
-MONGODB_URI=<your-mongodb-uri>
-EMAIL_USER=<your-email-username>
-EMAIL_PASS=<your-app-password>
-```
+- **Frontend**:
+  - React.js
+  - Tailwind CSS
+  - Formik & Yup (form validation)
+  - React-Quill (rich text editor)
+  - Axios (HTTP requests)
+  - Context API (state management)
 
-### 4. Run the Server
+- **Backend**:
+  - Express.js
+  - MongoDB
+  - Nodemailer (email notifications)
+  - Multer (file uploads)
 
-```bash
-npm start
-```
+## Contact
 
-The server should now be running at `http://localhost:5001`.
+For any inquiries, please contact [shreyyyk31@gmail.com](mailto:your-email@example.com)
 
-## API Endpoints
-
-### GET /
-
-**Description:** Welcome endpoint to verify that the API is running.
-
-**Response:**
-
-```plaintext
-Welcome to the API
-```
-
-### POST /api/contact
-
-**Description:** Endpoint to submit a contact form.
-
-**Request Body:**
-
-```json
-{
-  "name": "Your Name",
-  "email": "your.email@example.com",
-  "message": "Your message here"
-}
-```
-
-**Response:**
-
-- **201 Created**
-
-```plaintext
-Message sent successfully!
-```
-
-- **400 Bad Request**
-
-```plaintext
-All fields are required
-```
-
-- **500 Internal Server Error**
-
-```plaintext
-Error saving contact message
-```
